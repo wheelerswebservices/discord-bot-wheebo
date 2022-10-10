@@ -1,11 +1,14 @@
-
 import discord
+import os
+
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='>')
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='>', intents=intents)
 
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
 
-bot.run('token')
+bot.run(os.environ['DISCORD_TOKEN'])

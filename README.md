@@ -15,22 +15,14 @@ https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&scope=bot&permis
 ## Bot Dependencies
 
 ```
-# system update
 sudo apt update
-
-# system upgrade
 sudo apt upgrade
 
-# https://github.com/pypa/pip
+sudo apt install libffi-dev
+sudo apt install python3-cffi
 sudo apt install python3-pip
 
-# https://github.com/python-cffi
-sudo apt install python3-cffi
-
-# https://github.com/pypa/setuptools
 sudo pip3 install -U setuptools
-
-# https://github.com/Rapptz/discord.py
 sudo pip3 install discord.py
 ```
 
