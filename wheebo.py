@@ -1,14 +1,20 @@
 import discord
 import os
 
-from discord.ext import commands
+from discord import app_commands
+
 
 intents = discord.Intents.default()
-intents.message_content = True
-bot = commands.Bot(command_prefix='>', intents=intents)
+client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+@tree.command(name = "ping", description = "ping command")
+async def ping(interaction):
+    await interaction.response.send_message("pong")
 
-bot.run(os.environ['DISCORD_TOKEN'])
+@client.event
+async def on_ready():
+    await tree.sync()
+    print("Ready!")
+
+client.run(os.environ['DISCORD_TOKEN'])
