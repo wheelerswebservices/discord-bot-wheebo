@@ -21,7 +21,7 @@ driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
 async def scrape(interaction, name):
     await interaction.response.defer(ephemeral=True, thinking=True)
 
-    driver.get(f'https://learn.acloud.guru/series/${name}')
+    driver.get(f'https://learn.acloud.guru/series/{name}')
     time.sleep(3)
 
     video_element = driver.find_element(By.CSS_SELECTOR, '.css-uwfm48 a')
